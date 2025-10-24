@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-
+from datetime import timedelta
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "enrollments",
     "payments",
     "core",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -71,16 +72,23 @@ DATABASES = {
 
 
 # Add in settings.py
+
+
+# Tell Django to use our custom user
+AUTH_USER_MODEL = "users.User"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
 
-# Tell Django to use our custom user
-AUTH_USER_MODEL = "users.User"
-
-
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),  # Token valid for 1 hour
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # Token valid for 7 days
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": False,
+}
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
