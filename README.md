@@ -20,7 +20,7 @@ All operations are permission-controlled based on user roles.
 | Component | Technology |
 |------------|-------------|
 | Backend | Django, Django REST Framework (DRF) |
-| Database | PostgreSQL / SQLite (for local dev) |
+| Database | MySQL (for local dev) |
 | Authentication | JWT (SimpleJWT) |
 | Payment Gateway | Stripe API |
 | Caching (optional) | Redis |
@@ -326,9 +326,5 @@ Stripe will send events like:
 
 ---
 
-### 🧡 Built with Django REST Framework & Stripe
 
-```
-
----
 
