@@ -24,6 +24,7 @@ urlpatterns = [
     path("api/users/", include("users.urls")),
     path("api/", include("courses.urls")),
     path("api/", include("enrollments.urls")),
+    path("api/", include("payments.urls")),
 
     # Swagger endpoints
     path('swagger.json', schema_view.without_ui(cache_timeout=0), name='schema-json'),
